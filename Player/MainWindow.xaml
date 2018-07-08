@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Player"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"
+        MinHeight="450"
+        MinWidth="500"
+        MaxHeight="450"
+        MaxWidth="800"
         
+        AllowDrop="True"
+        Drop="Window_Drop"
+        >
+    <Grid Background="#f4444444">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="360"/>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="129"/>
+                <ColumnDefinition Width="146"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="52*"/>
+                <ColumnDefinition Width="42*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Click="PlayButton_Click" Margin="5,0,5,0">Play</Button>
+            <Button Click="StopButton_Click" Grid.Column="1" Margin="5,0,5,0">Stop</Button>
+            <Button Click="PauseButton_Click" Grid.Column="2" Margin="5,0,5,0">Pause</Button>
+            <TextBlock Margin="55,5,3,3" Grid.Column="3">Volume:</TextBlock>
+            <Slider ValueChanged="volume_ValueChanged" x:Name="volume" Grid.Column="4" Margin="7,0,10,0"></Slider>
+        </Grid>
+
+        <MediaElement x:Name="mediaElement" MediaOpened="mediaElement_MediaOpened" Margin="20"/>
+        <Slider x:Name="seek" Value="1"  Maximum="1" LargeChange="0.1" SmallChange="0.01" AllowDrop="True" ValueChanged="seek_ValueChanged" Grid.Row="2" Margin="5,5,5,0"/>
+
+
     </Grid>
 </Window>
